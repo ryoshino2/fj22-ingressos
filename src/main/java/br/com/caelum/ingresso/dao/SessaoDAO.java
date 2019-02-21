@@ -17,11 +17,14 @@ public class SessaoDAO {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
-	public void salvar (SessaoForm sessao) {
+	public void salvar (Sessao sessao) {
 		entityManager.persist(sessao);
 	}
 	
 	public List<Sessao> buscar(Sala sala){
-		return entityManager.createQuery("select s from Sessao where s.sala =: sala", Sessao.class).setParameter("sala", sala).getResultList();
+		return entityManager.createQuery("select s from Sessao s where s.sala = :sala",
+				Sessao.class)
+				.setParameter("sala", sala)
+				.getResultList();
 	}
 }
