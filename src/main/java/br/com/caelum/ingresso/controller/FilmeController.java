@@ -57,21 +57,15 @@ public class FilmeController {
 		if (result.hasErrors()) {
 			return form(Optional.ofNullable(filme.getId()), filme);
 		}
-
 		filmeDao.save(filme);
-
 		ModelAndView view = new ModelAndView("redirect:/admin/filmes");
-
 		return view;
 	}
 
 	@GetMapping(value = "/admin/filmes")
 	public ModelAndView lista() {
-
 		ModelAndView modelAndView = new ModelAndView("filme/lista");
-
 		modelAndView.addObject("filmes", filmeDao.findAll());
-
 		return modelAndView;
 	}
 
@@ -96,7 +90,7 @@ public class FilmeController {
 
 		Filme filme = filmeDao.findOne(id);
 		List<Sessao> sessoes = sessaoDAO.buscarSessoesDoFilme(filme);
-		Optional<DetalhesDoFilme> detalhesDoFilme = client.request(filme);
+		Optional<DetalhesDoFilme> detalhesDoFilme = client.request(filme, DetalhesDoFilme.class);
 		modelAndView.addObject("sessoes", sessoes);
 		modelAndView.addObject("detalhes", detalhesDoFilme.orElse(new DetalhesDoFilme()));
 		return modelAndView;

@@ -30,7 +30,6 @@ public class GerenciadorSessaoTest {
 		this.sessaoDasDez = new Sessao(LocalTime.parse("10:00:00"), rogueOne, sala3d);
 		this.sessaoDasTreze = new Sessao(LocalTime.parse("13:00:00"), rogueOne, sala3d);
 		this.sessaoDasDezoito = new Sessao(LocalTime.parse("18:00:00"), rogueOne, sala3d);
-
 	}
 
 	@Test
@@ -62,5 +61,4 @@ public class GerenciadorSessaoTest {
 		GerenciadorSessao gerenciadorSessao = new GerenciadorSessao(sessoes);
 		Assert.assertTrue(gerenciadorSessao.cabe(sessaoDasTreze));
 	}
-	
 }
