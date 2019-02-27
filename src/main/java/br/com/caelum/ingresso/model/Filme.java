@@ -22,19 +22,6 @@ public class Filme {
 	private String genero;
 	private BigDecimal preco;
 
-	public BigDecimal getPreco() {
-		return preco.setScale(2, RoundingMode.HALF_UP);
-	}
-
-	public void setPreco(BigDecimal preco) {
-		this.preco = preco;
-	}
-
-
-	public void setDuracao(Duration duracao) {
-		this.duracao = duracao;
-	}
-
 	/**
 	 * @deprecated hibernate only
 	 */
@@ -79,5 +66,13 @@ public class Filme {
 
 	public void setGenero(String genero) {
 		this.genero = genero;
+	}
+
+	public BigDecimal getPreco() {
+		return preco;
+	}
+
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
 	}
 }

@@ -28,7 +28,7 @@
                 </c:forEach>
             </div>
 
-            <div class="form-group">
+           <div class="form-group">
                 <label for="duracao">Duracao:</label>
                 <input id="duracao" type="text" name="duracao" class="form-control"
                        value="${filme.duracao.toMinutes()}">
@@ -44,6 +44,7 @@
 					<span class="text-danger">${error.defaultMessage}</span>
 				</c:forEach>
 			</div>
+
 
             <button type="submit" class="btn btn-primary">Gravar</button>
         </form>
