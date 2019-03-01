@@ -6,7 +6,6 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.spel.ast.OpAnd;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
@@ -16,10 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
 import br.com.caelum.ingresso.dao.FilmeDao;
 import br.com.caelum.ingresso.dao.SalaDao;
 import br.com.caelum.ingresso.dao.SessaoDAO;
+import br.com.caelum.ingresso.model.Carrinho;
 import br.com.caelum.ingresso.model.ImagemCapa;
 import br.com.caelum.ingresso.model.Sessao;
 import br.com.caelum.ingresso.model.TipoDeIngresso;
@@ -36,9 +35,10 @@ public class SessaoController {
 	private FilmeDao filmeDao;
 	@Autowired
 	private SessaoDAO sessaoDao;
-	
 	@Autowired
 	private DadosFilmeClient client;
+	@Autowired
+	private Carrinho carrinho;
 	
 	@GetMapping("/admin/sessao")
 	public ModelAndView form(@RequestParam("salaId") Integer salaId, SessaoForm form) {
@@ -74,8 +74,8 @@ public class SessaoController {
 		modelAndView.addObject("sessao",sessao);
 		modelAndView.addObject("imagemCapa", capa.orElse(new ImagemCapa()));
 		modelAndView.addObject("tiposDeIngressos", TipoDeIngresso.values());
+		modelAndView.addObject("carrinho", carrinho);
 		return modelAndView;
-		
 	}
 
 }
