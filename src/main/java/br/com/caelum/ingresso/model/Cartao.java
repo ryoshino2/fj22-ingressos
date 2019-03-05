@@ -31,8 +31,8 @@ public class Cartao {
 		this.vencimento = vencimento;
 	}
 	
-	public boolean isValido() {
-		return vencimento.isAfter(YearMonth.now());
-	}
+//	public boolean isValido() {
+//		return vencimento.isAfter(LocalDate.now());
+//	}
 
 }

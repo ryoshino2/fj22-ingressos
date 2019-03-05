@@ -20,7 +20,6 @@ public class SessaoForm {
 	private Integer salaId;
 
 	@DateTimeFormat(pattern = "HH:mm")
-	@NotNull
 	private LocalTime horario;
 
 	@NotNull
@@ -29,7 +28,7 @@ public class SessaoForm {
 	public Sessao toSessao(SalaDao salaDao, FilmeDao filmeDao) {
 		Filme filme = filmeDao.findOne(filmeId);
 		Sala sala = salaDao.findOne(salaId);
-		Sessao sessao = new Sessao(this.horario, filme, sala);
+		Sessao sessao = new Sessao(horario, filme, sala);
 
 		return sessao;
 	}

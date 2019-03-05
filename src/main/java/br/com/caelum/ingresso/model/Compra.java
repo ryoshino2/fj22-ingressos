@@ -15,20 +15,19 @@ public class Compra {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	@OneToMany(cascade = CascadeType.PERSIST)
 	List<Ingresso> ingressos = new ArrayList<>();
-	
 
 	/**
 	 * @deprecated hibernate only
 	 */
-	public Compra() {}
-	
+	public Compra() {
+	}
+
 	public Compra(List<Ingresso> ingressos) {
 		this.ingressos = ingressos;
 	}
-	
 
 	public List<Ingresso> getIngressos() {
 		return ingressos;

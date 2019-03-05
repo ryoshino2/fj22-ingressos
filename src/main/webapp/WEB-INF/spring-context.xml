@@ -23,6 +23,7 @@
 		base-package="br.com.caelum.ingresso" />
 	<mvc:annotation-driven
 		conversion-service="conversionService" />
+<!-- 	<mvc:annotation-driven /> -->
 	<mvc:default-servlet-handler />
 
 	<bean
@@ -35,24 +36,25 @@
 		class="org.springframework.context.support.ConversionServiceFactoryBean">
 		<property name="converters">
 			<set merge="true">
-				<bean
-					class="br.com.caelum.ingresso.model.converter.YearMonthConverter" />
+				<bean class="br.com.caelum.ingresso.model.converter.ConverterString" />
+				<bean class="br.com.caelum.ingresso.model.converter.YearMonthConverter" />
 			</set>
 		</property>
 	</bean>
 
-	<bean id="mysqlDS" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="username" value="root" />
-		<property name="password" value="" />
-		<property name="url"
-			value="jdbc:mysql://localhost/ingresso?createDatabaseIfNotExist=true&amp;useSSL=false" />
+	<bean id="postgresDS"
+		class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName"
-			value="com.mysql.jdbc.Driver" />
+			value="org.postgresql.Driver" />
+		<property name="url"
+			value="jdbc:postgresql://localhost:5432/ingresso" />
+		<property name="username" value="ryoshinotcc" />
+		<property name="password" value="abc" />
 	</bean>
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="dataSource" ref="mysqlDS" />
+		<property name="dataSource" ref="postgresDS" />
 		<property name="jpaVendorAdapter">
 			<bean
 				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
@@ -67,7 +69,6 @@
 	</bean>
 
 	<tx:annotation-driven />
-
 
 	<bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">

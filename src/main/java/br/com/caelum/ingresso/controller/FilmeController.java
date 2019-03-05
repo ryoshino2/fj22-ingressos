@@ -52,13 +52,16 @@ public class FilmeController {
 
 	@PostMapping("/admin/filme")
 	@Transactional
-	public ModelAndView salva(@Valid Filme filme, BindingResult result) {
-
+	public ModelAndView salva(@Valid Filme filme, BindingResult result, String nome) {
 		if (result.hasErrors()) {
 			return form(Optional.ofNullable(filme.getId()), filme);
 		}
-		filmeDao.save(filme);
+		if (filmeDao.findForName(nome).size()>0) {
+			System.out.println("entrou -----------------------------------------------------------------");
+			return form(Optional.ofNullable(filme.getId()), filme);
+		}
 		ModelAndView view = new ModelAndView("redirect:/admin/filmes");
+		filmeDao.save(filme);
 		return view;
 	}
 
