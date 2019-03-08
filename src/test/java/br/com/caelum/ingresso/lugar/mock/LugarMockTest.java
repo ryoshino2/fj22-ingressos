@@ -46,7 +46,7 @@ public class LugarMockTest {
 	@Test
 	public void buscarLugarPorId() {
 		Mockito.when(lugarDao.findOne(1)).thenReturn(lugarA);
-		assertEquals(lugarDao.findOne(1), lugarB);
+		assertEquals(lugarDao.findOne(1), lugarA);
 	}
 	
 }

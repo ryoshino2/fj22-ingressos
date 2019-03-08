@@ -49,13 +49,13 @@ public class CompraController {
 	@Transactional
 	public ModelAndView comprar(@Valid Cartao cartao, BindingResult result) {
 		ModelAndView modelAndView = new ModelAndView("redirect:/");
-//		if(cartao.isValido()) {
+		if(cartao.isValido()) {
 			compraDao.save(carrinho.toCompra());
-//		}else
-//		{
-//			result.rejectValue("vencimento", "Vencimento inválido");
-//			return checkout(cartao);
-//		}
+		}else
+		{
+			result.rejectValue("vencimento", "Vencimento inválido");
+			return checkout(cartao);
+		}
 		return modelAndView;
 	}
 }

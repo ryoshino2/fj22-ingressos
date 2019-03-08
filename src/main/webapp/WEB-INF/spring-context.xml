@@ -48,8 +48,8 @@
 			value="org.postgresql.Driver" />
 		<property name="url"
 			value="jdbc:postgresql://localhost:5432/ingresso" />
-		<property name="username" value="ryoshinotcc" />
-		<property name="password" value="abc" />
+		<property name="username" value="ryoshino" />
+		<property name="password" value="password" />
 	</bean>
 
 	<bean id="entityManagerFactory"

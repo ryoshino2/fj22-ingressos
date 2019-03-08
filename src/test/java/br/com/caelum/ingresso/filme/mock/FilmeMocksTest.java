@@ -58,10 +58,4 @@ public class FilmeMocksTest {
 		when(filmeDAO.findAll()).thenReturn(Arrays.asList(filme, filmeNovo));
 		assertFalse(filmeDAO.findAll().contains(filmeNovoA));
 	}
-	
-	@Test
-	public void naoAdicionarFilmeComMesmoNomeTest() {
-		when(filmeDAO.findAll()).thenReturn(Arrays.asList(filme, filmeNovo));
-		assertTrue(filmeDAO.findAll().contains(filmeNovoA));
-	}
 }
